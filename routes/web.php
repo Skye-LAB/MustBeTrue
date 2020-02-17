@@ -11,10 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+use Illuminate\Support\Facades\Route;
 
+Route::get('/', 'HomeController@index');
+Route::get('home', 'HomeController@index');
+Route::post('create', 'HomeController@store')->name('create');
+// Route::post('login', 'HomeController@auth')->name('login');
+Route::get('admin', 'HomeController@admin');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

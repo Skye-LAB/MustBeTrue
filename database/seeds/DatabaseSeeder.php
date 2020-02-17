@@ -35,10 +35,10 @@ class DatabaseSeeder extends Seeder
             \App\User::create([
                 'username' => $faker->userName,
                 'email' => $faker->email,
+                'hp' => $faker->phoneNumber,
                 'password' => bcrypt($faker->shuffleString(24)),
                 'position' => $faker->randomElement(['cashier', 'admin', 'chef', 'guest'])
             ]);
         }
-
     }
 }
