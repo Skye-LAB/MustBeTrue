@@ -62,6 +62,79 @@
               </div>
           </div>
       </nav>
+      <div class="modal fade" role="dialog" tabindex="-1" id="signIn">
+          <div class="modal-dialog" role="document">
+              <form action="{{ route('login') }}" method="post">
+                  @csrf
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h4 class="modal-title">Sign In</h4><button type="button" class="close" data-dismiss="modal"
+                              aria-label="Close"><span aria-hidden="true">×</span></button>
+                      </div>
+                      <div class="modal-body">
+                          <div class="input-group mb-2">
+                              <div class="input-group-prepend"><span class="input-group-text">
+                                      <ion-icon name="mail"></ion-icon>
+                                  </span></div><input class="form-control" type="text" placeholder="Email"
+                                  name="email">
+                              <div class="input-group-append"></div>
+                          </div>
+                          <div class="input-group">
+                              <div class="input-group-prepend"><span class="input-group-text">
+                                      <ion-icon name="lock-closed"></ion-icon>
+                                  </span></div><input class="form-control" type="password" placeholder="Password"
+                                  name="password">
+                              <div class="input-group-append"></div>
+                          </div>
+                          <div class="modal-footer"><button class="btn btn-primary" type="submit">Submit</button></div>
+                      </div>
+              </form>
+          </div>
+      </div>
+      </div>
+      <div class="modal fade" role="dialog" tabindex="-1" id="signUp">
+          <div class="modal-dialog" role="document">
+              <form action="{{ route('create') }}" method="post">
+                  @csrf
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h4 class="modal-title">Sign Up</h4><button type="button" class="close" data-dismiss="modal"
+                              aria-label="Close"><span aria-hidden="true">×</span></button>
+                      </div>
+                      <div class="modal-body">
+                          <div class="input-group mb-2">
+                              <div class="input-group-prepend"><span class="input-group-text">
+                                      <ion-icon name="person"></ion-icon>
+                                  </span></div><input class="form-control" type="text" placeholder="Username"
+                                  name="username">
+                              <div class="input-group-append"></div>
+                          </div>
+                          <div class="input-group mb-2">
+                              <div class="input-group-prepend"><span class="input-group-text">
+                                      <ion-icon name="mail"></ion-icon>
+                                  </span></div><input class="form-control" type="text" placeholder="Email" name="email">
+                              <div class="input-group-append"></div>
+                          </div>
+                          <div class="input-group mb-2">
+                              <div class="input-group-prepend"><span class="input-group-text">
+                                      <ion-icon name="lock-closed"></ion-icon>
+                                  </span></div><input class="form-control" type="password" placeholder="Password"
+                                  name="password">
+                              <div class="input-group-append"></div>
+                          </div>
+                          <div class="input-group">
+                              <div class="input-group-prepend"><span class="input-group-text">
+                                      <ion-icon name="call"></ion-icon>
+                                  </span></div><input class="form-control" type="text" placeholder="No. HP" name="hp">
+                              <div class="input-group-append"></div>
+                          </div>
+                      </div>
+                      <div class="modal-footer"><button class="btn btn-primary" type="submit">Submit</button></div>
+                  </div>
+          </div>
+          </form>
+      </div>
+      </div>
 
         <main class="py-4">
             @yield('isi')
