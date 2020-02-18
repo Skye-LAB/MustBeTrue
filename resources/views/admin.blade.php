@@ -76,13 +76,13 @@
                                 <tbody>
                                     @foreach($menu as $d)
                                     <tr>
-                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{$loop->iteration}}</td> 
                                         <td>{{$d->harga}}</td>
                                         <td>{{$d->nama_menu}}</td>
                                         <td><img src="{{asset('img/menu/'.$d->photo)}}" alt=""></td>
                                         <td>
                                             <button class="btn btn-success" type="button">Edit</button>
-                                            <form action="{{ url('admin/menu/'.$d->menu_id) }}" method="post">
+                                            <form action="{{ url('admin/menu/'.$d->id) }}" method="post">
                                                 @method('delete')
                                                 @csrf
                                                 <button class="btn btn-danger" type="submit">Hapus</button>

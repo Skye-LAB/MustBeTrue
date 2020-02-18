@@ -103,8 +103,8 @@ class MenuController extends Controller
     public function destroy(Menu $menu)
     {
         // return 'a';
-        // dd($menu->menu_id);
-        $menu->destroy($menu->menu_id);
-        return redirect()->refresh();
+        // dd($menu->id);
+        $menu->destroy($menu->id);
+        return redirect()->back();
     }
 }
