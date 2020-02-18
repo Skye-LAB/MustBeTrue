@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Menu;
-
 class HomeController extends Controller
 {
     /**
@@ -33,7 +32,8 @@ class HomeController extends Controller
       User::create([
         'username' => $req->username,
         'email' => $req->email,
-        'password' => bcrypt($req->password)
+        'password' => bcrypt($req->password),
+        'position' => 'guest'
       ]);
       return redirect ('/');
     }
