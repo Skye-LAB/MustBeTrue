@@ -75,7 +75,23 @@ class MenuController extends Controller
      */
     public function update(Request $request, Menu $menu)
     {
-        //
+        // if ($request->hasFile('photo')) {
+        //     $image = $request->file('photo')->getClientOriginalName();
+        // } else {
+        //     $image = 'default.jpg';
+        // }
+
+        // $request->validate([
+        //     'nama_menu' => 'required',
+        //     'harga' => 'required',
+        //     'photo' => 'required|mimes:jpg,jpeg,gif,png,svg|size:3072'
+        // ]);
+        // menu::where('menu_id', $menu->menu_id)
+        //     ->update([
+        //         'nama_menu' => $request->name,
+        //         'harga' => $request->price,
+        //         'photo' => $image
+        //     ]);
     }
 
     /**
@@ -86,7 +102,9 @@ class MenuController extends Controller
      */
     public function destroy(Menu $menu)
     {
-        $menu->destroy($menu->id);
+        // return 'a';
+        // dd($menu->menu_id);
+        $menu->destroy($menu->menu_id);
         return redirect()->refresh();
     }
 }

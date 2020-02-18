@@ -82,7 +82,7 @@
                                         <td><img src="{{asset('img/menu/'.$d->photo)}}" alt=""></td>
                                         <td>
                                             <button class="btn btn-success" type="button">Edit</button>
-                                            <form action="{{ url('admin/menu/'.$d->id) }}" method="post">
+                                            <form action="{{ url('admin/menu/'.$d->menu_id) }}" method="post">
                                                 @method('delete')
                                                 @csrf
                                                 <button class="btn btn-danger" type="submit">Hapus</button>
