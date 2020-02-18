@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Employee;
 use Illuminate\Http\Request;
 use App\User;
 use App\Menu;
@@ -28,21 +29,21 @@ class HomeController extends Controller
     $menu = Menu::all();
     return view('home', compact('menu'));
   }
-
-  public function create(Request $request)
+  public function admin()
   {
-    $request->validate([
-      'username' => 'required',
-      'email' => 'required|email',
-      'password' => 'required',
-    ]);
+    $menu = Menu::all();
+    $employee = Employee::all();
+    $user = User::where('position', 'guest')->get();
+    return view('admin', compact('menu', 'employee', 'user'));
+  }
+
+  public function create(Request $req)
+  {
     User::create([
-      'username' => $request->username,
-      'email' => $request->email,
-      'password' => bcrypt($request->password),
-      'hp' => $request->hp,
-      'position' => 'guest'
+      'username' => $req->username,
+      'email' => $req->email,
+      'password' => bcrypt($req->password)
     ]);
-    return redirect()->back();
+    return redirect('/');
   }
 }

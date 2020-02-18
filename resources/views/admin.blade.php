@@ -2,19 +2,20 @@
 
 @section('title', 'Admin | Foody')
 
-@section('content')
-    <div>
-        <ul class="nav nav-tabs">
-            <li class="nav-item"><a class="nav-link active" role="tab" data-toggle="tab" href="#tab-1">Menu</a></li>
-            <li class="nav-item"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-2">Employee</a></li>
-            <li class="nav-item"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-3">Guest</a></li>
-        </ul>
-        <div class="tab-content">
-            <div class="tab-pane active" role="tabpanel" id="tab-1">
-                <div class="container">
-                    <div class="row mt-4">
-                        <div class="col">
-                        <a class="btn btn-primary action-button mr-1" role="button" href="#" data-toggle="modal" data-target="#addEM">Add Menu</a>
+@section('isi')
+<div>
+    <ul class="nav nav-tabs">
+        <li class="nav-item"><a class="nav-link active" role="tab" data-toggle="tab" href="#tab-1">Menu</a></li>
+        <li class="nav-item"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-2">Employee</a></li>
+        <li class="nav-item"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-3">Guest</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" role="tabpanel" id="tab-1">
+            <div class="container">
+                <div class="row mt-4">
+                    <div class="col">
+                        <a class="btn btn-primary action-button mr-1" role="button" href="#" data-toggle="modal"
+                            data-target="#addEM">Add Menu</a>
                         <div class="modal fade" role="dialog" tabindex="-1" id="addEM">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -147,7 +148,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                  @foreach ($employee as $k)
+                                    @foreach ($employee as $k)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{$k->nama_employee}}</td>
@@ -159,20 +160,20 @@
                                             <button class="btn btn-danger" type="button">Hapus</button></td>
                                     </tr>
                                     @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="tab-pane" role="tabpanel" id="tab-3">
-                <div class="container">
-                    <div class="row mt-4">
-                        <div class="col">
-                            <div class="table-responsive">
-                                <table class="table mt-4">
-                                    <thead>
+        </div>
+        <div class="tab-pane" role="tabpanel" id="tab-3">
+            <div class="container">
+                <div class="row mt-4">
+                    <div class="col">
+                        <div class="table-responsive">
+                            <table class="table mt-4">
+                                <thead>
                                     <tr>
                                         <th>No.</th>
                                         <th>Username</th>
@@ -181,28 +182,28 @@
                                         <th>Position</th>
                                         <th>Options</th>
                                     </tr>
-                                    </thead>
-                                    <tbody>
-                                      @foreach($user as $d)
-                                      <tr>
-                                          <td>{{$loop->iteration}}</td>
-                                          <td>{{$d->username}}</td>
-                                          <td>{{$d->email}}</td>
-                                          {{-- <td>{{$d->password}}</td> --}}
-                                          <td>{{$d->hp}}</td>
-                                          <td>{{$d->position}}</td>
-                                          <td><button class="btn btn-success" type="button">Edit</button>
-                                              <button class="btn btn-danger" type="button">Hapus</button></td>
-                                      </tr>
-                                      @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
+                                </thead>
+                                <tbody>
+                                    @foreach($user as $d)
+                                    <tr>
+                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{$d->username}}</td>
+                                        <td>{{$d->email}}</td>
+                                        {{-- <td>{{$d->password}}</td> --}}
+                                        <td>{{$d->hp}}</td>
+                                        <td>{{$d->position}}</td>
+                                        <td><button class="btn btn-success" type="button">Edit</button>
+                                            <button class="btn btn-danger" type="button">Hapus</button></td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection
