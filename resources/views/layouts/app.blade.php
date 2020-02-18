@@ -52,8 +52,13 @@
                       <li class="dropdown nav-item"><a class="dropdown-toggle nav-link" data-toggle="dropdown"
                         aria-expanded="false" href="#">{{auth()->user()->username}}</a>
                         <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation"
-                          href="#">Change Password</a><a class="dropdown-item" role="presentation"
-                          href="#">Logout</a></div>
+                          href="#">Change Password</a>
+                          <form class="" action="{{route('logout')}}" method="post">
+                            @csrf
+                            <button class="dropdown-item" role="presentation"
+                            href="#" type="submit">Logout</button>
+                          </form>
+                        </div>
                         </li>
                       </ul>
                   @endguest
