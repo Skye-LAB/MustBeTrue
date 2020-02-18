@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Menu;
 use App\Employee;
+use App\User;
 use Illuminate\Http\Request;
 
 class MenuController extends Controller
@@ -17,7 +18,8 @@ class MenuController extends Controller
     {
         $menu = Menu::all();
         $employee = Employee::all();
-        return view('admin', compact('menu', 'employee'));
+        $user = User::where('position', 'guest')->get();
+        return view('admin', compact('menu', 'employee', 'user'));
     }
 
     /**
@@ -38,7 +40,8 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Menu::create($request->all());
+        return redirect()->refresh();
     }
 
     /**
@@ -83,6 +86,7 @@ class MenuController extends Controller
      */
     public function destroy(Menu $menu)
     {
-        //
+        $menu->destroy($menu->id);
+        return redirect()->refresh();
     }
 }
