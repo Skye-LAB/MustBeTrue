@@ -6,7 +6,6 @@ use App\Employee;
 use Illuminate\Http\Request;
 use App\User;
 use App\Menu;
-
 class HomeController extends Controller
 {
   /**
@@ -37,13 +36,13 @@ class HomeController extends Controller
     return view('admin', compact('menu', 'employee', 'user'));
   }
 
-  public function create(Request $req)
-  {
-    User::create([
-      'username' => $req->username,
-      'email' => $req->email,
-      'password' => bcrypt($req->password)
-    ]);
-    return redirect('/');
-  }
+    public function create(Request $req) {
+      User::create([
+        'username' => $req->username,
+        'email' => $req->email,
+        'password' => bcrypt($req->password),
+        'position' => 'guest'
+      ]);
+      return redirect ('/');
+    }
 }
