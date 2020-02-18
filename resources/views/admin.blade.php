@@ -1,8 +1,8 @@
-@extends('layout.app')
+@extends('layouts.app')
 
 @section('title', 'Admin | Foody')
 
-@section('isi')
+@section('content')
     <div>
         <ul class="nav nav-tabs">
             <li class="nav-item"><a class="nav-link active" role="tab" data-toggle="tab" href="#tab-1">Menu</a></li>

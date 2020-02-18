@@ -1,8 +1,8 @@
-@extends('layout.app')
+@extends('layouts.app')
 
 @section('title', 'Foody | Food Daily')
 
-@section('isi')
+@section('content')
     <div class="container">
         <div class="row col">
         @foreach($menu as $m)
