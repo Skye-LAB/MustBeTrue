@@ -20,7 +20,8 @@ Auth::routes();
 
 Route::get('home', 'HomeController@index');
 Route::get('admin', 'HomeController@admin');
-Route::resource('admin/menu', 'MenuController');
-Route::resource('admin/employee', 'EmployeeController');
-
 Route::post('create', 'HomeController@create')->name('create');
+Route::resources([
+    'admin/menu' => 'MenuController',
+    'admin/employee' => 'EmployeeController'
+]);
