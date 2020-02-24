@@ -4,6 +4,9 @@
 
 @section('isi')
 <div>
+    @auth
+    @if (auth()->user()->position == "admin")
+
     <ul class="nav nav-tabs">
         <li class="nav-item"><a class="nav-link active" role="tab" data-toggle="tab" href="#tab-1">Menu</a></li>
         <li class="nav-item"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-2">Employee</a></li>
@@ -180,8 +183,15 @@
                                         {{-- <td>{{$k->password}}</td> --}}
                                         <td>{{$k->hp}}</td>
                                         <td>{{$k->position}}</td>
-                                        <td><button class="btn btn-success" type="button">Edit</button>
-                                            <button class="btn btn-danger" type="button">Hapus</button></td>
+
+                                        <td><a href="{{ url('admin/employee', [$k->id, 'edit']) }}"
+                                                class="btn btn-primary">edit</a>
+                                            <form action="{{url('admin/employee/'.$k->id)}}" method="post">
+                                                @csrf
+                                                @method('delete')
+                                                <button class="btn btn-danger" type="submit">Hapus</button>
+                                        </td>
+                                        </form>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -226,34 +236,10 @@
             </div>
         </div>
     </div>
-</div>
-<div class="modal fade" role="dialog" tabindex="-1" id="signIn">
-    <div class="modal-dialog" role="document">
-        <form action="{{ route('login') }}" method="post">
-            @csrf
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Sign In</h4><button type="button" class="close" data-dismiss="modal"
-                        aria-label="Close"><span aria-hidden="true">×</span></button>
-                </div>
-                <div class="modal-body">
-                    <div class="input-group mb-2">
-                        <div class="input-group-prepend"><span class="input-group-text">
-                                <ion-icon name="mail"></ion-icon>
-                            </span></div><input class="form-control" type="text" placeholder="Email" name="email">
-                        <div class="input-group-append"></div>
-                    </div>
-                    <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text">
-                                <ion-icon name="lock-closed"></ion-icon>
-                            </span></div><input class="form-control" type="password" placeholder="Password"
-                            name="password">
-                        <div class="input-group-append"></div>
-                    </div>
-                    <div class="modal-footer"><button class="btn btn-primary" type="submit">Submit</button></div>
-                </div>
-        </form>
-    </div>
+    @elseif(auth()->user()->position == "cashier")
+
+    @endif
+    @endauth
 </div>
 </div>
 </div>

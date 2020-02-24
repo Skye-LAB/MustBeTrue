@@ -19,9 +19,12 @@ Route::get('/', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('home', 'HomeController@index');
-Route::get('admin', 'HomeController@admin');
+Route::get('order/{menu}', 'HomeController@orderForm');
 Route::post('create', 'HomeController@create')->name('create');
-Route::resources([
-    'admin/menu' => 'MenuController',
-    'admin/employee' => 'EmployeeController'
-]);
+Route::group(['middleware' => ['auth', '!admin:admin']], function () {
+    Route::get('admin', 'HomeController@admin');
+    Route::resources([
+        'admin/menu' => 'MenuController',
+        'admin/employee' => 'EmployeeController'
+    ]);
+});
