@@ -16,7 +16,9 @@
                     <div class="card-body">
                         <h5 class="card-title">{{$m->nama_menu}}</h5>
                         <h6 class="text-muted card-subtitle mb-2">{{$m->harga}}</h6>
-                        <form action="{{ url('order/'.$m->id) }}" method="GET">
+                        <form action="{{ url('order/'.$m->id) }}" method="post">
+                            @csrf
+                            <input type="text" name="qty" placeholder="qty">
                             <button class="btn-order" type="submit">order</button>
                         </form>
                     </div>

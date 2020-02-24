@@ -36,10 +36,14 @@ class HomeController extends Controller
     $user = User::where('position', 'guest')->get();
     return view('admin', compact('menu', 'employee', 'user'));
   }
-  public function orderForm(Menu $menu)
+  public function order(Request $request, Menu $menu)
   {
     $menuPesan =  $menu->where("id", $menu->id)->first();
-    return view('order', compact('menuPesan'));
+    $totalharga = ['total' => $menuPesan->harga * $request->qty];
+    $request->request->add($menuPesan->toArray());
+    $request->request->add($totalharga);
+    $pesanan = $request->all();
+    return view('payment', compact('pesanan'));
   }
   public function payment($id)
   {

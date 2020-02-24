@@ -19,7 +19,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('home', 'HomeController@index');
-Route::get('order/{menu}', 'HomeController@orderForm');
+Route::post('order/{menu}', 'HomeController@order');
 Route::post('create', 'HomeController@create')->name('create');
 Route::group(['middleware' => ['auth', '!admin:admin']], function () {
     Route::get('admin', 'HomeController@admin');
