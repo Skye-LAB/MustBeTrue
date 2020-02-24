@@ -36,18 +36,18 @@
 
     })
 
-    $.ajax({
-        type: "post",
-        url: "/pay",
-        data: {
-            nama_menu: $('#nama').text(),
-            qty : qty,
-            p
-        },
-        dataType: "dataType",
-        success: function (response) {
+    // $.ajax({
+    //     type: "post",
+    //     url: "/pay",
+    //     data: {
+    //         nama_menu: $('#nama').text(),
+    //         qty : qty,
+    //         p
+    //     },
+    //     dataType: "dataType",
+    //     success: function (response) {
             
-        }
-    });
+    //     }
+    // });
 </script>
 @endsection
