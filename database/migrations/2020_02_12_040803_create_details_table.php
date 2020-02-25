@@ -19,7 +19,7 @@ class CreateDetailsTable extends Migration
             $table->integer('menu_id');
             $table->integer('qty');
             $table->integer('price');
-            $table->enum('status', ['cooking', 'pending', 'deliver', 'cooked']);
+            $table->enum('status', ['cooking', 'pending', 'deliver', 'cooked'])->default('pending');
             $table->timestamps();
         });
     }

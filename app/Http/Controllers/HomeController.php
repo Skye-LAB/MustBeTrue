@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Detail;
 use App\Employee;
 use Illuminate\Http\Request;
 use App\User;
@@ -38,15 +39,26 @@ class HomeController extends Controller
   }
   public function order(Request $request, Menu $menu)
   {
+    $request->validate([
+      'qty' => 'required|numeric'
+    ]);
     $menuPesan =  $menu->where("id", $menu->id)->first();
-    $totalharga = ['total' => $menuPesan->harga * $request->qty];
+    $subTot = ['total' => $menuPesan->harga * $request->qty];
     $request->request->add($menuPesan->toArray());
-    $request->request->add($totalharga);
+    $request->request->add($subTot);
     $pesanan = $request->all();
-    return view('payment', compact('pesanan'));
+    return $pesanan;
+    view('payment', compact('pesanan'));
   }
-  public function payment($id)
+  public function getMenu(Menu $menu, Request $request)
   {
+    $hsl = Menu::findOrFail($menu->id);
+    return response()->json($hsl, 200);
+  }
+  public function showCart(Detail $detail, Request $request)
+  {
+    // $detail->where('order_id', $request->order_id)->first();
+    return view('cart');
   }
   public function create(Request $req)
   {
