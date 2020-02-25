@@ -15,7 +15,7 @@
                 <div class="col-md-8">
                     <div class="card-body">
                         <h5 class="card-title">{{$m->nama_menu}}</h5>
-                        <h6 class="text-muted card-subtitle mb-2">{{$m->harga}}</h6>
+                        <h6 class="text-muted card-subtitle mb-2">Harga: {{$m->harga}}</h6>
                         <form action="{{ url('order/'.$m->id) }}" method="post">
                             @csrf
                             <input type="text" name="qty" placeholder="qty">
@@ -33,10 +33,10 @@
 
 @section('js')
 <script>
-    $('.btn-order').click(function (e) { 
+    $('.btn-order').click(function (e) {
         e.preventDefault();
         console.log($('.btn-order').attr('id'););
-        
+
     });
 </script>
 @endsection
