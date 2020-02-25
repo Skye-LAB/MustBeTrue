@@ -16,9 +16,9 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('order_id');
             $table->integer('employee_id')->index();
-            $table->integer('user-id')->index();
+            $table->integer('user_id')->index();
             $table->enum('payment', ['Credit Card', 'Cash']);
-            $table->string('bank');
+            $table->enum('bank', ['BRI', 'Mandiri', 'BNI']);
             $table->timestamps();
         });
     }

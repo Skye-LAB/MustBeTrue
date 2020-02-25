@@ -15,11 +15,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index')->name('home');
-
+Route::get('cart', 'HomeController@showCart');
 Auth::routes();
 
 Route::get('home', 'HomeController@index');
-Route::post('order/{menu}', 'HomeController@order');
 Route::post('create', 'HomeController@create')->name('create');
 Route::group(['middleware' => ['auth', '!admin:admin']], function () {
     Route::get('admin', 'HomeController@admin');
@@ -27,4 +26,7 @@ Route::group(['middleware' => ['auth', '!admin:admin']], function () {
         'admin/menu' => 'MenuController',
         'admin/employee' => 'EmployeeController'
     ]);
+});
+Route::group(['middleware' => 'auth'], function () {
+    Route::post('order/{menu}', 'HomeController@order');
 });

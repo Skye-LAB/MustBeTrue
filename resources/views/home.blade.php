@@ -18,7 +18,8 @@
                         <h6 class="text-muted card-subtitle mb-2">Harga: {{$m->harga}}</h6>
                         <form action="{{ url('order/'.$m->id) }}" method="post">
                             @csrf
-                            <input type="text" name="qty" placeholder="qty">
+                            <input type="number" name="qty" placeholder="qty"
+                                class="@error('qty') 'is-invalid' @enderror">
                             <button class="btn-order" type="submit">order</button>
                         </form>
                     </div>
@@ -26,6 +27,11 @@
             </div>
         </div>
         @endforeach
+        @error('qty')
+        <script>
+            alert('Masukkan Jumlah Qty')
+        </script>
+        @enderror
     </div>
 
 </div>
