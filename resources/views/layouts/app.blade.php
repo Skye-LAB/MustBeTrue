@@ -19,6 +19,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('paymentCss')
     <link rel="stylesheet" href="{{ asset('/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/Footer-Basic.css') }}">
     <link rel="stylesheet" href="{{ asset('/fonts/ionicons.min.css') }}">
