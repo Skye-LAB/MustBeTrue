@@ -47,7 +47,7 @@ class HomeController extends Controller
     $request->request->add($menuPesan->toArray());
     $request->request->add($subTot);
     $pesanan = $request->all();
-    return $pesanan;
+    return 
     view('payment', compact('pesanan'));
   }
   public function getMenu(Menu $menu, Request $request)
