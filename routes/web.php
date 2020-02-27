@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('cart', 'HomeController@showCart');
+Route::get('order/menu/{menu}', 'HomeController@showMenu');
 Auth::routes();
 
 Route::get('home', 'HomeController@index');

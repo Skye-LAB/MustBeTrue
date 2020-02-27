@@ -50,10 +50,10 @@ class HomeController extends Controller
     return $pesanan;
     view('payment', compact('pesanan'));
   }
-  public function getMenu(Menu $menu, Request $request)
+  public function showMenu(Menu $menu)
   {
-    $hsl = Menu::findOrFail($menu->id);
-    return response()->json($hsl, 200);
+    $pesanan = $menu->findOrFail($menu->id);
+    return view('payment', compact('pesanan'));
   }
   public function showCart(Detail $detail, Request $request)
   {

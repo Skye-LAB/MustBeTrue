@@ -18,20 +18,13 @@
                         <h6 class="text-muted card-subtitle mb-2">Harga: {{$m->harga}}</h6>
                         <form action="{{ url('order/'.$m->id) }}" method="post">
                             @csrf
-                            <input type="number" name="qty" placeholder="qty"
-                                class="@error('qty') 'is-invalid' @enderror">
-                            <button class="btn-order" type="submit">order</button>
+                            <a class="btn-order btn btn-primary" href="{{ url('order/menu/'.$m->id) }}">Order</a>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
         @endforeach
-        @error('qty')
-        <script>
-            alert('Masukkan Jumlah Qty')
-        </script>
-        @enderror
     </div>
 
 </div>
@@ -39,10 +32,6 @@
 
 @section('js')
 <script>
-    $('.btn-order').click(function (e) {
-        e.preventDefault();
-        console.log($('.btn-order').attr('id'););
-
-    });
+    
 </script>
 @endsection
