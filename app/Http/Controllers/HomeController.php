@@ -61,6 +61,11 @@ class HomeController extends Controller
     $pesanan = $menu->findOrFail($menu->id);
     return view('payment', compact('pesanan'));
   }
+  public function ajaxGet(Menu $menu)
+  {
+    $pesanan = $menu->findOrFail($menu->id);
+    return response()->json($pesanan);
+  }
   public function showCart(Detail $detail, Request $request)
   {
     // $detail->where('order_id', $request->order_id)->first();

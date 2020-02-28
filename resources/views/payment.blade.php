@@ -34,6 +34,7 @@
                 <h6 class="text-muted text-right mb-2" id="subtot"></h6>
               </div>
             </div>
+            <button id="btn" class="btn btn-success">Order</button>
           </div>
         </div>
       </div>
@@ -49,12 +50,23 @@
 
   setInterval(function (){
     if(qty.val() < 1){
-      qty.val('1')
+     
+      qty.val(1)
     }
     let harga = "{{$pesanan['harga']}}" * qty.val();
     $('#subtot').text(`Rp.${harga}`);
   }, 50);
-
+$(document).on('click','#btn',function () {
+  console.log(this);
   
+  $.ajax({
+    type: "get",
+    url: "{{url('order/ajax/'.$pesanan->id)}}",
+    dataType: "json",
+    success: function (response) {
+      alert('Anda Berhasil Memesan Menu: '+ response.nama_menu  +' dengan Jumlah Qty: '+qty.val()+' dengan Harga: '+$('#subtot').text())
+    }
+  });
+});
 </script>
 @endsection

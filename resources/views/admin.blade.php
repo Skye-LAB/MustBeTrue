@@ -21,7 +21,7 @@
                             data-target="#addEM">Add Menu</a>
                         <div class="modal fade" role="dialog" tabindex="-1" id="addEM">
                             <div class="modal-dialog" role="document">
-                                <form action="{{url('admin/menu')}}" method="post">
+                                <form action="{{url('admin/menu')}}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -52,7 +52,7 @@
                                                 </div>
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" id="inputGroupFile01"
-                                                        aria-describedby="inputGroupFileAddon01">
+                                                        aria-describedby="inputGroupFileAddon01" name="photo">
                                                     <label class="custom-file-label" for="inputGroupFile01">Choose
                                                         file</label>
                                                 </div>

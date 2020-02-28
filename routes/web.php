@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('cart', 'HomeController@showCart');
-Route::get('order/menu/{menu}', 'HomeController@showMenu');
 Auth::routes();
 
 Route::get('home', 'HomeController@index');
@@ -29,5 +28,7 @@ Route::group(['middleware' => ['auth', '!admin:admin']], function () {
     ]);
 });
 Route::group(['middleware' => 'auth'], function () {
+    Route::get('order/menu/{menu}', 'HomeController@showMenu');
+    Route::get('order/ajax/{menu}', 'HomeController@ajaxGet');
     Route::post('order/{menu}', 'HomeController@order');
 });
