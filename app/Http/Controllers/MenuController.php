@@ -40,8 +40,15 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-        Menu::create($request->all());
-        return redirect()->refresh();
+        if ($request->hasFile('photo')) {
+            $request->file('photo')->move('/images', $request->file('photo')->getClientOriginalName());
+        }
+        return $request->all();
+        Menu::create([
+            'nama_menu' => $request->nama_menu,
+            'harga' => $request->harga,
+            'photo' => $request->file('photo')
+        ]);
     }
 
     /**
