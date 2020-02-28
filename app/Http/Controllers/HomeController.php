@@ -7,6 +7,7 @@ use App\Employee;
 use Illuminate\Http\Request;
 use App\User;
 use App\Menu;
+use Alert;
 
 class HomeController extends Controller
 {
@@ -50,7 +51,7 @@ class HomeController extends Controller
   //   $request->request->add($menuPesan->toArray());
   //   $request->request->add($subTot);
   //   $pesanan = $request->all();
-  //   return 
+  //   return
   //   view('payment', compact('pesanan'));
   // }
 
@@ -65,7 +66,7 @@ class HomeController extends Controller
     // $detail->where('order_id', $request->order_id)->first();
     return view('cart');
   }
-  
+
   public function create(Request $req)
   {
     $req->validate([
@@ -79,6 +80,7 @@ class HomeController extends Controller
       'password' => bcrypt($req->password),
       'position' => 'guest'
     ]);
+    Alert::alert('Berhasil', 'Akun Telah Dibuat');
     return redirect()->refresh();
   }
 }
