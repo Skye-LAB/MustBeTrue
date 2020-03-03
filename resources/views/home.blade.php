@@ -13,25 +13,35 @@
                         class="card-img">
                 </div>
                 <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">{{$m->nama_menu}}</h5>
+                    <div class="card-body menu">
+                        <h5 menu="{{$m->id}}" class="card-title">{{$m->nama_menu}}</h5>
                         <h6 class="text-muted card-subtitle mb-2">Harga: {{$m->harga}}</h6>
-                        <form action="{{ url('order/'.$m->id) }}" method="post">
-                            @csrf
-                            <a class="btn-order btn btn-primary" href="{{ url('order/menu/'.$m->id) }}">Order</a>
-                        </form>
+
+                        <button class="btn-order btn btn-primary">Order</button>
                     </div>
                 </div>
             </div>
         </div>
         @endforeach
     </div>
-
 </div>
 @endsection
 
 @section('js')
 <script>
-    
+    $('.menu').click('.btn',function (e) { 
+        let id = this.children[0].getAttribute('menu');
+        $.ajax({
+            type: "post",
+            url: `order/ajax/${id}`,
+            data: {
+                "_token" : "{{ csrf_field() }}"
+            },
+            dataType: "json",
+            success: function (response) {
+                swal("aaaaa")
+            }
+        });
+    });
 </script>
 @endsection

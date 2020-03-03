@@ -152,6 +152,7 @@
     </main>
     </div>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
 @include('sweetalert::alert')
 <script src="{{ asset('js/jquery.min.js') }}"></script>

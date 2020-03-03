@@ -29,7 +29,7 @@ Route::group(['middleware' => ['auth', '!admin:admin']], function () {
 });
 Route::group(['middleware' => 'auth'], function () {
     Route::get('order/menu/{menu}', 'HomeController@showMenu');
-    Route::get('order/ajax/{menu}', 'HomeController@ajaxGet');
+    Route::post('order/ajax/{menu}', 'HomeController@ajaxGet');
     Route::post('order/{menu}', 'HomeController@order');
 });
 

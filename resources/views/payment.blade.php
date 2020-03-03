@@ -40,6 +40,15 @@
       </div>
     </div>
   </div>
+  {{-- <div class="card card-body">
+    <div class="row col">
+      <input type="text" class="input-form">
+      <select name="method" id="pay">
+        <option value="Bank">Bank</option>
+        <option value="Cash">Cash</option>
+      </select>
+    </div>
+  </div> --}}
 </div>
 @endsection
 
@@ -56,16 +65,20 @@
     $('#subtot').text(`Rp.${harga}`);
   }, 50);
 $(document).on('click','#btn',function () {
-  console.log(this);
-
   $.ajax({
-    type: "get",
+    type: "post",
     url: "{{url('order/ajax/'.$pesanan->id)}}",
+    data:{
+      '_token': "{{csrf_token()}}",
+    },
     dataType: "json",
     success: function (response) {
-      alert('Anda Berhasil Memesan Menu: '+ response.nama_menu  +' dengan Jumlah Qty: '+qty.val()+' dengan Harga: '+$('#subtot').text())
+      swal()
     }
   });
 });
+
+$('#subtot').append('<span>aaa</span>')
+
 </script>
 @endsection
