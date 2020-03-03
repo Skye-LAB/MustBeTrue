@@ -15,7 +15,7 @@ class CreateDetailsTable extends Migration
     {
         Schema::create('details', function (Blueprint $table) {
             $table->bigIncrements('detail_id');
-            $table->integer('order_id');
+            $table->integer('order_id')->nullable();
             $table->integer('menu_id');
             $table->integer('qty');
             $table->integer('price');

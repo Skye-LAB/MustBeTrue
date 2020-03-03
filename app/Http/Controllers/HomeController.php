@@ -7,7 +7,7 @@ use App\Employee;
 use Illuminate\Http\Request;
 use App\User;
 use App\Menu;
-use Alert;
+use RealRashid\SweetAlert\Facades\Alert as FacadesAlert;
 
 class HomeController extends Controller
 {
@@ -85,7 +85,7 @@ class HomeController extends Controller
       'password' => bcrypt($req->password),
       'position' => 'guest'
     ]);
-    Alert::alert('Berhasil', 'Akun Telah Dibuat');
+    FacadesAlert::alert('Berhasil', 'Akun Telah Dibuat');
     return redirect()->refresh();
   }
 }
