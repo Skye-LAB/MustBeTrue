@@ -24,24 +24,26 @@
         </div>
         @endforeach
     </div>
+    {{ csrf_token() }}
 </div>
 @endsection
-
 @section('js')
 <script>
     $('.menu').click('.btn',function (e) { 
         let id = this.children[0].getAttribute('menu');
+        console.log(id);
         $.ajax({
             type: "post",
             url: `order/ajax/${id}`,
             data: {
-                "_token" : "{{ csrf_field() }}"
+                '_token' : "{{csrf_token()}}"
             },
             dataType: "json",
             success: function (response) {
-                swal("aaaaa")
+                swal('Orderan sudah masuk cart');
+                          
             }
         });
-    });
+        });
 </script>
 @endsection

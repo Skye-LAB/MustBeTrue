@@ -58,8 +58,9 @@ class HomeController extends Controller
   // Show the order menu when klik order
   public function showMenu(Menu $menu)
   {
-    $pesanan = $menu->findOrFail($menu->id);
-    return view('payment', compact('pesanan'));
+    // Detail::
+    // $pesanan = $menu->findOrFail($menu->id);
+    return view('cart');
   }
   public function ajaxGet(Menu $menu)
   {
