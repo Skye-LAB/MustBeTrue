@@ -7,6 +7,7 @@ use App\Employee;
 use Illuminate\Http\Request;
 use App\User;
 use App\Menu;
+use App\Order;
 use RealRashid\SweetAlert\Facades\Alert as FacadesAlert;
 
 class HomeController extends Controller
@@ -65,12 +66,18 @@ class HomeController extends Controller
   public function ajaxGet(Menu $menu)
   {
     $pesanan = $menu->findOrFail($menu->id);
+    Detail::create([
+      'menu_id' => $pesanan->id,
+      'qty' => 1,
+      'price' => $pesanan->harga
+    ]);
     return response()->json($pesanan);
   }
-  public function showCart(Detail $detail, Request $request)
+  public function showCart(Order $order)
   {
-    // $detail->where('order_id', $request->order_id)->first();
-    return view('cart');
+    $pesanan = Detail::all();
+    return $pesanan;
+    // return view('cart', compact('pesanan'));
   }
 
   public function create(Request $req)
