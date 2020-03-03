@@ -24,12 +24,11 @@
         </div>
         @endforeach
     </div>
-    {{ csrf_token() }}
 </div>
 @endsection
 @section('js')
 <script>
-    $('.menu').click('.btn',function (e) { 
+    $('.menu').click('.btn',function (e) {
         let id = this.children[0].getAttribute('menu');
         console.log(id);
         $.ajax({
@@ -41,7 +40,7 @@
             dataType: "json",
             success: function (response) {
                 swal('Orderan sudah masuk cart');
-                          
+
             }
         });
         });
