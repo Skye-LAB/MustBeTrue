@@ -34,5 +34,5 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::get('payment', function () {
-  return view('payment');
+  return view('cart');
 });
