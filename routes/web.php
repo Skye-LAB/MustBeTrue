@@ -27,12 +27,12 @@ Route::group(['middleware' => ['auth', '!admin:admin']], function () {
         'admin/employee' => 'EmployeeController'
     ]);
 });
-Route::post('order/ajax/{menu}', 'HomeController@ajaxGet');
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('cart', 'HomeController@showMenu');
+    Route::post('order/ajax/{menu}', 'HomeController@ajaxGet');
+    Route::get('cart', 'HomeController@showCart');
     Route::post('order/{menu}', 'HomeController@order');
 });
 
-Route::get('payment', function () {
-  return view('cart');
+Route::get('cashier', function () {
+  return view('cashier');
 });

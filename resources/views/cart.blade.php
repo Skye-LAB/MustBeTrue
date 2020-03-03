@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @extends('layouts.app')
 
 @section('title', 'Foody | Food Daily')
@@ -82,3 +83,5 @@ $('#subtot').append('<span>aaa</span>')
 
 </script>
 @endsection
+=======
+>>>>>>> 94c5ae1155117f4f1df46e688802ac8ad579f4c5

@@ -34,7 +34,7 @@
                         class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navcol-1">
                     <ul class="nav navbar-nav">
-                        <li class="nav-item mx-1" role="presentation"><a class="nav-link" href="#">
+                        <li class="nav-item mx-1" role="presentation"><a class="nav-link" href="{{ url('order/menu/c') }}">
                                 <!--<span class="badge badge-danger badge-counter">3+</span>-->
                                 <ion-icon name="cart">Cart</ion-icon>
                             </a></li>
