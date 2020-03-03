@@ -32,3 +32,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('order/ajax/{menu}', 'HomeController@ajaxGet');
     Route::post('order/{menu}', 'HomeController@order');
 });
+
+Route::get('payment', function () {
+  return view('payment');
+});

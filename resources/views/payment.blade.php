@@ -41,7 +41,6 @@
     </div>
   </div>
 </div>
-</div>
 @endsection
 
 @section('js')
@@ -50,7 +49,7 @@
 
   setInterval(function (){
     if(qty.val() < 1){
-     
+
       qty.val(1)
     }
     let harga = "{{$pesanan['harga']}}" * qty.val();
@@ -58,7 +57,7 @@
   }, 50);
 $(document).on('click','#btn',function () {
   console.log(this);
-  
+
   $.ajax({
     type: "get",
     url: "{{url('order/ajax/'.$pesanan->id)}}",
