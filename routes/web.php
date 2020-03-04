@@ -32,3 +32,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('cart', 'HomeController@showCart');
     Route::post('order/{menu}', 'HomeController@order');
 });
+
+Route::group(['middleware' => ['auth','!admin:admin,cashier']], function(){
+    Route::get('cashier', 'EmployeeController@cashierForm');
+});

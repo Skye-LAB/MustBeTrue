@@ -76,11 +76,11 @@ class HomeController extends Controller
   public function showCart(Order $order)
   {
     $pesanan = Detail::all();
-    return $pesanan;
-    // return view('cart', compact('pesanan'));
+    // return $pesanan;
+    return view('cart', compact('pesanan'));
   }
 
-  public function create(Request $req)
+  public function create(Request $req) 
   {
     $req->validate([
       'username' => 'required|string',

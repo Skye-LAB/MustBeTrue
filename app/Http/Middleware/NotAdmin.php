@@ -18,6 +18,6 @@ class NotAdmin
         if ($request->user()->position == $role) {
             return $next($request);
         }
-        return abort('403', 'Anda bukan admin');
+        return abort('403', 'Anda bukan ' . $role);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Detail;
 use App\Employee;
 use App\Http\Controllers\Controller;
 use App\User;
@@ -28,7 +29,11 @@ class EmployeeController extends Controller
     {
         //
     }
-
+    public function cashierForm()
+    {
+        $detail = Detail::all();
+        return view('cashier', compact('detail'));
+    }
     /**
      * Store a newly created resource in storage.
      *

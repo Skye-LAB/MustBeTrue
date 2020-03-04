@@ -15,4 +15,8 @@ class Menu extends Model
         }
         return asset('images/' . $this->photo);
     }
+    // public function Detail()
+    // {
+    //     return $this->hasOne('App\Detail');
+    // }
 }

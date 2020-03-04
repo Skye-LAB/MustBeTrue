@@ -39,7 +39,10 @@
             dataType: "json",
             success: function (response) {
                 swal('Orderan sudah masuk cart, \n\n Silahkan Menuju ke Kasir');
-            }
+            },
+            error: function (response) {
+                swal(response.statusText)
+              }
         });
         });
 </script>
