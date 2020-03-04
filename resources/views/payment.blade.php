@@ -58,7 +58,7 @@
 
   setInterval(function (){
     if(qty.val() < 1){
-     
+
       qty.val(1)
     }
     let harga = "{{$pesanan['harga']}}" * qty.val();

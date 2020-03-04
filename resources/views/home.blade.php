@@ -28,7 +28,7 @@
 @endsection
 @section('js')
 <script>
-    $('.menu').click(function (e) { 
+    $('.menu').click(function (e) {
         let id = this.firstChild.nextSibling.getAttribute('menu');
         $.ajax({
             type: "post",
@@ -38,11 +38,17 @@
             },
             dataType: "json",
             success: function (response) {
-                swal('Orderan sudah masuk cart, \n\n Silahkan Menuju ke Kasir');
+                swal({
+                  icon: 'success',
+                  title: 'Peringatan!!',
+                  text: 'Orderan sudah masuk cart, Silahkan Menuju ke Kasir',
+                  button: 'Oke'
+                });
             },
             error: function (response) {
                 swal(response.statusText)
               }
+            }
         });
         });
 </script>
