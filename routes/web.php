@@ -34,8 +34,8 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::group(['middleware' => ['auth','!admin:admin,cashier']], function(){
-    Route::get('cashier', 'EmployeeController@cashierForm');
 });
+Route::get('cashier', 'EmployeeController@cashierForm');
 
 Route::get('chef', function() {
   return view('chef');
