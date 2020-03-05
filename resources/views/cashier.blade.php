@@ -14,10 +14,10 @@
                             <label class="input-group-text" for="inputGroupSelect01">Order ID</label>
                         </div>
                         <select class="custom-select" id="inputGroupSelect01">
-                            <option selected>Choose...</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            @foreach ($order as $o)
+
+                            <option value="{{$o->order_id}}">{{$o->order_id}}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -33,8 +33,13 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($order as $o)
                         <tr>
+                        <td>{{$loop->iteration}}</td>  
+                        <td>{{}} </td>  
+                        <td>{{}} </td>  
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

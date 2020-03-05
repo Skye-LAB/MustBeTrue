@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Detail;
 use App\Employee;
 use App\Http\Controllers\Controller;
+use App\Order;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -31,8 +32,8 @@ class EmployeeController extends Controller
     }
     public function cashierForm()
     {
-        $detail = Detail::all();
-        return view('cashier', compact('detail'));
+        $order = Order::all();
+        return view('cashier', compact('order'));
     }
     /**
      * Store a newly created resource in storage.

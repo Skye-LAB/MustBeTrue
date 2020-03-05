@@ -66,11 +66,27 @@ class HomeController extends Controller
   public function ajaxGet(Menu $menu)
   {
     $pesanan = $menu->findOrFail($menu->id);
-    Detail::create([
-      'menu_id' => $pesanan->id,
-      'qty' => 1,
-      'price' => $pesanan->harga
-    ]);
+    $order = Order::where('order_id', 'like', '%' . auth()->user()->id)->get()->first();
+    if ($order) {
+      Detail::create([
+        'menu_id' => $pesanan->id,
+        'order_id' => $order->order_id,
+        'qty' => 1,
+        'price' => $pesanan->harga
+      ]);
+      
+    }else{
+      Order::create([
+        'order_id' => date('Ym') . auth()->user()->id,
+        'user_id' => auth()->user()->id
+      ]);
+      Detail::create([
+        'menu_id' => $pesanan->id,
+        'order_id' => $order->order_id,
+        'qty' => 1,
+        'price' => $pesanan->harga
+      ]);
+    }
     return response()->json($pesanan);
   }
   public function showCart(Order $order)
@@ -80,7 +96,7 @@ class HomeController extends Controller
     return view('cart', compact('pesanan'));
   }
 
-  public function create(Request $req) 
+  public function create(Request $req)
   {
     $req->validate([
       'username' => 'required|string',
