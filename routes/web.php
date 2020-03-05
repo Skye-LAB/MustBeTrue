@@ -32,12 +32,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('cart', 'HomeController@showCart');
     Route::post('order/{menu}', 'HomeController@order');
 });
+Route::get('chef', 'HomeController@chef');
 
-<<<<<<< HEAD
 Route::group(['middleware' => ['auth','!admin:admin,cashier']], function(){
     Route::get('cashier', 'EmployeeController@cashierForm');
-=======
-Route::get('cashier', function () {
-  return view('cashier');
->>>>>>> 8d95251540e3baefdbaa0ceb1bbede4bb53c8915
 });

@@ -16,7 +16,6 @@
                     <div class="card-body menu">
                         <h5 menu="{{$m->id}}" class="card-title">{{$m->nama_menu}}</h5>
                         <h6 class="text-muted card-subtitle mb-2">Harga: {{$m->harga}}</h6>
-
                         <button class="btn-order btn btn-primary">Order</button>
                     </div>
                 </div>
@@ -30,6 +29,8 @@
 <script>
     $('.menu').click(function (e) {
         let id = this.firstChild.nextSibling.getAttribute('menu');
+        console.log(id );
+        
         $.ajax({
             type: "post",
             url: `order/ajax/${id}`,
@@ -44,7 +45,7 @@
                   text: 'Orderan sudah masuk cart, Silahkan Menuju ke Kasir',
                   button: 'Oke'
                 });
-            },
+            }
             error: function (response) {
                 swal(response.statusText)
               }
