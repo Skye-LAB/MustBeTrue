@@ -17,6 +17,7 @@ class CreateOrdersTable extends Migration
             $table->bigIncrements('order_id');
             $table->integer('employee_id')->index()->nullable();
             $table->integer('user_id')->index();
+            $table->string('card_number')->nullable();
             $table->enum('payment', ['Credit Card', 'Cash'])->nullable();
             $table->enum('bank', ['BRI', 'Mandiri', 'BNI'])->nullable();
             $table->timestamps();
