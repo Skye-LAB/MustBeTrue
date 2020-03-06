@@ -35,6 +35,10 @@ class EmployeeController extends Controller
         $order = Order::all();
         return view('cashier', compact('order'));
     }
+    public function payment(Request $request)
+  {
+    return $request->all();
+  }
     /**
      * Store a newly created resource in storage.
      *

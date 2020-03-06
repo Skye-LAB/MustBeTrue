@@ -63,7 +63,14 @@ class HomeController extends Controller
     // $pesanan = $menu->findOrFail($menu->id);
     return view('cart');
   }
-  public function ajaxGet(Menu $menu)
+  
+  public function getAjax($m)
+  {
+    $order = Detail::where('order_id', '=', $m)->get();
+    // $a = $order->join()
+    return response()->json($order);
+  }
+  public function ajaxPost(Menu $menu)
   {
     $pesanan = $menu->findOrFail($menu->id);
     $order = Order::where('order_id', 'like', '%' . auth()->user()->id)->get()->first();
@@ -74,8 +81,7 @@ class HomeController extends Controller
         'qty' => 1,
         'price' => $pesanan->harga
       ]);
-      
-    }else{
+    } else {
       Order::create([
         'order_id' => date('Ym') . auth()->user()->id,
         'user_id' => auth()->user()->id

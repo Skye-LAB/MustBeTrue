@@ -45,11 +45,11 @@
                   text: 'Orderan sudah masuk cart, Silahkan Menuju ke Kasir',
                   button: 'Oke'
                 });
-            }
+            },
             error: function (response) {
                 swal(response.statusText)
               }
-            }
+            
         });
         });
 </script>
