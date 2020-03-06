@@ -93,10 +93,11 @@
 @section('js')
 <script>
     let price =0
-                    setInterval(()=>{
-                        $('#tot').text(`Rp.${price}`)
+    setInterval(()=>{
+        $('#tot').text(`Rp.${price}`)
                     },500)
-    function getFromOrder() { 
+                    function getFromOrder() { 
+                        let data = ''
         $.ajax({
                 type: "post",
                 url: `get/order/${order.val()}`,
@@ -105,7 +106,6 @@
                 },
                 dataType: "json",
                 success: function (response) {
-                    let data = ''
                     response.forEach(element => {
                     data += `<tr>
                                                 <td>${element['detail_id']}</td>
@@ -133,7 +133,7 @@
         }
     $('#order').on('change',function () { 
        getFromOrder() 
-            
+            price = 0
         });
     });
     $('#payment').on('change', function () {

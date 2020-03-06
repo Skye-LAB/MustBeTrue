@@ -8,6 +8,7 @@ class Menu extends Model
 {
     protected $fillable = ['nama_menu', 'harga', 'photo'];
 
+
     public function getProfile()
     {
         if (!$this->photo) {
@@ -15,8 +16,8 @@ class Menu extends Model
         }
         return asset('images/' . $this->photo);
     }
-    // public function Detail()
-    // {
-    //     return $this->hasOne('App\Detail');
-    // }
+    public function Detail()
+    {
+        return $this->hasMany('App\Detail');
+    }
 }

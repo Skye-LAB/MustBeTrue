@@ -42,20 +42,6 @@ class HomeController extends Controller
     return view('admin', compact('menu', 'employee', 'user'));
   }
 
-  // public function order(Request $request, Menu $menu)
-  // {
-  //   $request->validate([
-  //     'qty' => 'required|numeric'
-  //   ]);
-  //   $menuPesan =  $menu->where("id", $menu->id)->first();
-  //   $subTot = ['total' => $menuPesan->harga * $request->qty];
-  //   $request->request->add($menuPesan->toArray());
-  //   $request->request->add($subTot);
-  //   $pesanan = $request->all();
-  //   return
-  //   view('payment', compact('pesanan'));
-  // }
-
   // Show the order menu when klik order
   public function showMenu(Menu $menu)
   {
@@ -63,7 +49,7 @@ class HomeController extends Controller
     // $pesanan = $menu->findOrFail($menu->id);
     return view('cart');
   }
-  
+
   public function getAjax($m)
   {
     $order = Detail::where('order_id', '=', $m)->get();
@@ -72,6 +58,7 @@ class HomeController extends Controller
   }
   public function ajaxPost(Menu $menu)
   {
+    $detailWhere = Detail::where('menu_id', '=', $menu->id)->get()->first();
     $pesanan = $menu->findOrFail($menu->id);
     $order = Order::where('order_id', 'like', '%' . auth()->user()->id)->get()->first();
     if ($order) {
@@ -86,10 +73,10 @@ class HomeController extends Controller
         'order_id' => date('Ym') . auth()->user()->id,
         'user_id' => auth()->user()->id
       ]);
-      Detail::create([
+      Detail::updateOrCreate([
         'menu_id' => $pesanan->id,
         'order_id' => $order->order_id,
-        'qty' => 1,
+        'qty' => $detailWhere->qty + 1,
         'price' => $pesanan->harga
       ]);
     }
@@ -97,8 +84,9 @@ class HomeController extends Controller
   }
   public function showCart(Order $order)
   {
-    $pesanan = Detail::all();
+    $pesanan = Order::all();
     // return $pesanan;
+    dd($pesanan->Detail);
     return view('cart', compact('pesanan'));
   }
 
