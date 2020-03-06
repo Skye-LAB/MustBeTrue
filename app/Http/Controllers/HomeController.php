@@ -56,14 +56,6 @@ class HomeController extends Controller
   //   view('payment', compact('pesanan'));
   // }
 
-  // Show the order menu when klik order
-  public function showMenu(Menu $menu)
-  {
-    // Detail::
-    // $pesanan = $menu->findOrFail($menu->id);
-    return view('cart');
-  }
-  
   public function getAjax($m)
   {
     $order = Detail::where('order_id', '=', $m)->get();
@@ -98,7 +90,6 @@ class HomeController extends Controller
   public function showCart(Order $order)
   {
     $pesanan = Detail::all();
-    // return $pesanan;
     return view('cart', compact('pesanan'));
   }
 
