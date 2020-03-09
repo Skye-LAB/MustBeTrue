@@ -78,7 +78,6 @@ $(document).on('click','#btn',function () {
   });
 });
 
-$('#subtot').append('<span>aaa</span>')
 
 </script>
 @endsection

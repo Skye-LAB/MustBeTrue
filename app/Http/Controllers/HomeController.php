@@ -54,24 +54,30 @@ class HomeController extends Controller
     $detailWhere = Detail::where('menu_id', '=', $menu->id)->get()->first();
     $pesanan = $menu->findOrFail($menu->id);
     $order = Order::where('order_id', 'like', '%' . auth()->user()->id)->get()->first();
-    if ($order) {
-      Detail::create([
-        'menu_id' => $pesanan->id,
-        'order_id' => $order->order_id,
-        'qty' => 1,
-        'price' => $pesanan->harga
+    if ($detailWhere) {
+      Detail::where('menu_id', '=', $menu->id)->update([
+        'qty' => $detailWhere->qty +  1
       ]);
     } else {
-      Order::create([
-        'order_id' => date('Ym') . auth()->user()->id,
-        'user_id' => auth()->user()->id
-      ]);
-      Detail::updateOrCreate([
-        'menu_id' => $pesanan->id,
-        'order_id' => $order->order_id,
-        'qty' => $detailWhere->qty + 1,
-        'price' => $pesanan->harga
-      ]);
+      if ($order) {
+        Detail::create([
+          'menu_id' => $pesanan->id,
+          'order_id' => $order->order_id,
+          'qty' => 1,
+          'price' => $pesanan->harga
+        ]);
+      } else {
+        Order::create([
+          'order_id' => date('Ym') . auth()->user()->id,
+          'user_id' => auth()->user()->id
+        ]);
+        Detail::create([
+          'menu_id' => $pesanan->id,
+          'order_id' => $order->order_id,
+          'qty' => 1,
+          'price' => $pesanan->harga
+        ]);
+      }
     }
     return response()->json($pesanan);
   }

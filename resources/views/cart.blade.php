@@ -18,60 +18,58 @@
         <div class="col-lg-10">
           <div class="card-body">
             <h5 class="card-title">{{$key->menu->nama_menu}}</h5>
-            <h6 class="text-muted card-subtitle mb-2">Harga: Rp {{$key['price']}}</h6>
+            <h6 class="text-muted card-subtitle mb-2 harga">Harga: Rp {{$key['price']}}</h6>
             <div class="row">
               <div class="col">
                 <div class="def-number-input number-input safari_only">
                   <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus">
                     <ion-icon name="remove"></ion-icon>
                   </button>
-                  <input class="quantity" min="1" name="quantity" value="1" type="number">
+                  <input class="quantity" min="1" name="quantity" value="{{$key->qty}}" type="number">
                   <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus">
                     <ion-icon name="add"></ion-icon>
                   </button>
                 </div>
               </div>
               <div class="col">
-                <h6 class="text-muted text-right mb-2" id="subtot"></h6>
+                <h6 class="text-muted text-right mb-2 subtot">Rp.{{$key->price*$key->qty}}</h6>
               </div>
             </div>
-            <button id="btn" class="btn btn-success">Order</button>
+            <button class="btn btn-success">Order</button>
           </div>
         </div>
       </div>
     </div>
-  @endforeach
+    @endforeach
   </div>
+  <span id="total"></span>
 </div>
 @endsection
 
 @section('js')
-{{-- <script>
-  let qty = $('.quantity')
+<script>
+  setInterval(function () {
+  let allSub = $('.subtot').text().split('Rp.');
+  let arrSub = allSub.splice(1,allSub.length)
+  let tot = 0
 
-  setInterval(function (){
-    if(qty.val() < 1){
-
-      qty.val(1)
-    }
-    let harga = "{{$pesanan['harga']}}" * qty.val();
-    $('#subtot').text(`Rp.${harga}`);
-  }, 50);
-$(document).on('click','#btn',function () {
-  $.ajax({
-    type: "post",
-    url: "{{url('order/ajax/'.$pesanan->id)}}",
-    data:{
-      '_token': "{{csrf_token()}}",
-    },
-    dataType: "json",
-    success: function (response) {
-      swal()
-    }
+  arrSub.forEach(element => {
+    tot += parseInt(element);
   });
-});
-
-$('#subtot').append('<span>aaa</span>')
-
-</script> --}}
+    $('#total').text(`Rp.${tot}`)
+    },70)  
+  
+  
+  $('.card-body').on('click',function (e) {
+    let findPrice = $(this).find('.harga').text().replace(/Harga: Rp./y,'');
+    let findQtyVal = $(this).find('.quantity').val();
+    let findSubtotOf = $(this).find('.subtot');
+    let subTot = findPrice * findQtyVal;
+    sessionStorage.setItem('subtot', subTot)
+    
+    findSubtotOf.text(`Rp.${sessionStorage.getItem('subtot')}`)
+    
+  });
+     
+</script>
 @endsection

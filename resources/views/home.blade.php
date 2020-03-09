@@ -42,7 +42,7 @@
                 swal({
                   icon: 'success',
                   title: 'Peringatan!!',
-                  text: 'Orderan sudah masuk cart, Silahkan Menuju ke Kasir',
+                  text: 'Orderan sudah masuk cart, Silahkan Mengisi qty',
                   button: 'Oke'
                 });
             },
