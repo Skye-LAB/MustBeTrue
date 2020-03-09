@@ -8,9 +8,9 @@
 
 @section('isi')
 <div class="container">
-  <div class="row col">
+  <div class="row" style="padding-bottom: 60px">
     @foreach ($pesanan as $key)
-    <div class="card col-lg-12 mx-auto">
+    <div class="card col-lg-12 mt-2">
       <div class="row no-gutters">
         <div class="col-lg-2 my-auto ">
           <img src="https://pizzahutid.s3-ap-southeast-1.amazonaws.com/menu/PHD_Mybox_20190904.png" class="card-img">
@@ -42,7 +42,24 @@
     </div>
     @endforeach
   </div>
-  <span id="total"></span>
+</div>
+<div class="card col-lg-12 pb-2 pt-2 fixed-bottom">
+  <div class="row no-gutters">
+    <div class="col-lg-2 my-auto ">
+      <span class="">Total
+        <h6 class="text-muted mt-2" id="total"></h6>
+      </span>
+    </div>
+    <div class="col-lg-10">
+      <div class="card-body">
+          <div class="col">
+          </div>
+          <div class="col">
+            <button class="btn btn-success float-right">Order</button>
+          </div>
+      </div>
+    </div>
+  </div>
 </div>
 @endsection
 
@@ -57,19 +74,19 @@
     tot += parseInt(element);
   });
     $('#total').text(`Rp.${tot}`)
-    },70)  
-  
-  
+    },70)
+
+
   $('.card-body').on('click',function (e) {
     let findPrice = $(this).find('.harga').text().replace(/Harga: Rp./y,'');
     let findQtyVal = $(this).find('.quantity').val();
     let findSubtotOf = $(this).find('.subtot');
     let subTot = findPrice * findQtyVal;
     sessionStorage.setItem('subtot', subTot)
-    
+
     findSubtotOf.text(`Rp.${sessionStorage.getItem('subtot')}`)
-    
+
   });
-     
+
 </script>
 @endsection
